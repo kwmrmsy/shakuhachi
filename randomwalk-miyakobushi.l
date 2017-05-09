@@ -109,15 +109,15 @@
       (setq chou-list (append chou-list (list chou)))
 
       ;; random walk
-      (setq walk-roulette (random 8))
+      (setq walk-roulette (random 11))
 ;;      (setq walk-roulette (random 7))
-      (cond ((= walk-roulette 0)
+      (cond ((or (= walk-roulette 0) (= walk-roulette 1))
              (setq next-oto present-oto))
-            ((= walk-roulette 7)
+            ((= walk-roulette 10)
              (setq next-oto (random 27))
              (format t "random oto. step:~A~%" step)
              )
-            ((or (= walk-roulette 1) (= walk-roulette 2) (= walk-roulette 3))
+            ((or (= walk-roulette 2) (= walk-roulette 3) (= walk-roulette 4) (= walk-roulette 5))
              (cond ((= chou 0)
                     (cond ((= present-oto 1) (setq next-oto 2))
                           ((= present-oto 2) (setq next-oto 1))
@@ -193,7 +193,7 @@
                           ))
                    ) ;; cond chou
              ) ;; walk-roulette 1,2
-            ((or (= walk-roulette 4) (= walk-roulette 5) (= walk-roulette 6))
+            ((or (= walk-roulette 6) (= walk-roulette 7) (= walk-roulette 8) (= walk-roulette 9))
              (cond ((= chou 0)
                     (cond ((= present-oto 1) (setq next-oto 2))
                           ((= present-oto 2) (setq next-oto 6))
