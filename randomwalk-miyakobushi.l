@@ -110,11 +110,7 @@
 
       ;; random walk
       (setq walk-roulette (random 21))
-;;      (setq walk-roulette (random 7))
       (cond
-       ;; ((or (= walk-roulette 0) (= walk-roulette 1))
-       ;;  (setq next-oto present-oto))
-
        ((= walk-roulette 0)
         (setq next-oto (random 27))
         (format t "random oto. step:~A~%" step)
@@ -194,7 +190,7 @@
                      (t (setq next-oto (random 27)) (format t "present-oto:~A chou:~A walk-roulette:~A tenchou-flg:~A~%" present-oto chou walk-roulette tenchou-flg))
                      ))
               ) ;; cond chou
-        ) ;; walk-roulette 1,2
+        )
        ((and (>= walk-roulette 10) (<= walk-roulette 20))
         (cond ((= chou 0)
                (cond ((= present-oto 1) (setq next-oto 2))
@@ -270,7 +266,7 @@
                      (t (setq next-oto (random 27)) (format t "present-oto:~A chou:~A walk-roulette:~A tenchou-flg:~A~%" present-oto chou walk-roulette tenchou-flg))
                      ))
               ) ;; cond chou
-        ) ;; walk-roulette 3,4
+        )
        ) ;; cond walk-roulette
 
       (setq oto-list (append oto-list (list next-oto)))
