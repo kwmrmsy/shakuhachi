@@ -3,6 +3,7 @@
 動作環境
 ============
 * euslispをインストールしてください。 https://github.com/euslisp/jskeus
+* euslisp以外のLispでの動作は保証されません。
 
 randomwalk-miyakobushi.l
 ============
