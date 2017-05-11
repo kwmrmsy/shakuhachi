@@ -37,8 +37,8 @@
 ;;3:re
 ;;4:tu chumeri
 
-(warn "(randomwalk-shaku maxstep)~%")
-(defun randomwalk-shaku (maxstep)
+(warn "(randomwalk-shaku maxstep :randomtone nil)~%")
+(defun randomwalk-shaku (maxstep &key (randomtone nil))
   (let ((chou 0)  ;; 0:ro 1:ri 2:chi 3:re 4:tu
         (step 0)
         (present-oto 0)
@@ -109,13 +109,15 @@
       (setq chou-list (append chou-list (list chou)))
 
       ;; random walk
-      (setq walk-roulette (random 21))
+      (if randomtone
+          (setq walk-roulette (random 31))
+        (setq walk-roulette (1+ (random 30))))
       (cond
        ((= walk-roulette 0) ;; random oto
         (setq next-oto (random 27))
         (format t "random oto. step:~A~%" step)
         )
-       ((and (>= walk-roulette 1) (<= walk-roulette 8)) ;; one scale down
+       ((and (>= walk-roulette 1) (<= walk-roulette 13)) ;; one scale down
         (cond ((= chou 0)
                (cond ((= present-oto 1) (setq next-oto 2))
                      ((= present-oto 2) (setq next-oto 1))
@@ -191,7 +193,7 @@
                      ))
               ) ;; cond chou
         )
-       ((and (>= walk-roulette 9) (<= walk-roulette 10)) ;; two scales down (only 5 halftone)
+       ((and (>= walk-roulette 14) (<= walk-roulette 15)) ;; two scales down (only 5 halftone)
         (cond ((= chou 0)
                (cond ((= present-oto 1) (setq next-oto 6))
                      ((= present-oto 2) (setq next-oto 1))
@@ -267,7 +269,7 @@
                      ))
               ) ;; cond chou
         )
-       ((and (>= walk-roulette 10) (<= walk-roulette 18)) ;; one scale up
+       ((and (>= walk-roulette 16) (<= walk-roulette 28)) ;; one scale up
         (cond ((= chou 0)
                (cond ((= present-oto 1) (setq next-oto 2))
                      ((= present-oto 2) (setq next-oto 6))
@@ -343,7 +345,7 @@
                      ))
               ) ;; cond chou
         )
-       ((and (>= walk-roulette 19) (<= walk-roulette 20)) ;; two scales up (only 5 halftone)
+       ((and (>= walk-roulette 29) (<= walk-roulette 30)) ;; two scales up (only 5 halftone)
         (cond ((= chou 0)
                (cond ((= present-oto 1) (setq next-oto 6))
                      ((= present-oto 2) (setq next-oto 6))
